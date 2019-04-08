@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import Header from './components/header';
+import Filters from './components/filters';
 
 export default class App extends Component{
   render(){
     return(
-      <div>Hello World!</div>
+      <>
+        <Header/>
+        <Filters/>
+      </>
     );
   }
 }
