@@ -1,0 +1,26 @@
+{
+  "name": "web_interface",
+  "version": "1.0.0",
+  "description": "Web interface for developers",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "parcel src/index.html",
+    "build:prod": "parcel build src/index.html",
+    "start": "node server/server.js"
+  },
+  "author": "AwesomeChap",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "parcel-bundler": "^1.12.3"
+  }
+}
