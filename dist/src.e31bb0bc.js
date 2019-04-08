@@ -25878,7 +25878,12 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Header;
-},{"react":"../node_modules/react/index.js","../scss/header.scss":"scss/header.scss"}],"components/filters.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../scss/header.scss":"scss/header.scss"}],"scss/filter.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/filters.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25887,6 +25892,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+require("../scss/filter.scss");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -25900,13 +25907,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Filters =
 /*#__PURE__*/
@@ -25919,16 +25928,76 @@ function (_Component) {
     _classCallCheck(this, Filters);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Filters).call(this, props));
-    _this.state = {};
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e, selectedItemIndex) {
+      _this.setState({
+        selected: selectedItemIndex
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _this.state = {
+      selected: 0,
+      c_hash: "",
+      r_name: "",
+      pr_no: "",
+      a_name: ""
+    };
     return _this;
   }
 
   _createClass(Filters, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", {
-        className: "filter-container"
+      var _this2 = this;
+
+      var filters = ["Show All", "Commit Hash", "Repository", "PR No", "Author"];
+      var filters2 = filters.map(function (f, i) {
+        return _react.default.createElement("div", {
+          "data-name": f,
+          className: _this2.state.selected === i ? "selected filter" : "filter",
+          onClick: function onClick(e) {
+            _this2.handleClick(e, i);
+          },
+          key: "filter-" + i
+        }, f);
       });
+      return _react.default.createElement("div", {
+        className: "filter-container-wrapper"
+      }, _react.default.createElement("div", {
+        className: "filter-container"
+      }, filters2, this.state.selected === 1 && _react.default.createElement("input", {
+        onChange: this.handleChange,
+        value: this.state.c_hash,
+        name: "c_hash",
+        className: "input",
+        placeholder: "Enter Commit Hash"
+      }), this.state.selected === 2 && _react.default.createElement("input", {
+        onChange: this.handleChange,
+        value: this.state.r_name,
+        name: "r_name",
+        className: "input",
+        placeholder: "Enter Repository Name"
+      }), this.state.selected === 3 && _react.default.createElement("input", {
+        onChange: this.handleChange,
+        value: this.state.pr_no,
+        name: "pr_no",
+        className: "input",
+        placeholder: "Enter Enter PR No."
+      }), this.state.selected === 4 && _react.default.createElement("input", {
+        onChange: this.handleChange,
+        value: this.state.a_name,
+        name: "a_name",
+        className: "input",
+        placeholder: "Enter Author Name"
+      })), !this.state.selected ? _react.default.createElement("div", {
+        className: "filter-msg"
+      }, "Showing All Repositories. Choose any option above to filter repositories") : _react.default.createElement("div", {
+        className: "filter-msg"
+      }, "Filtering Repositories according to ", _react.default.createElement("span", null, filters[this.state.selected])));
     }
   }]);
 
@@ -25936,7 +26005,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Filters;
-},{"react":"../node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../scss/filter.scss":"scss/filter.scss"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

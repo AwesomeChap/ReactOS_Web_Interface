@@ -1,0 +1,76 @@
+.filter-container-wrapper{
+  display: flex;
+  flex-direction: column;
+  margin: 4vh 0;
+}
+
+.filter-msg{
+  color: #777;
+  font-size: 14px;
+  margin-left: 10px;
+
+  span{
+    color: #ddd;
+  }
+}
+
+.filter-container{
+  margin-bottom: 2vh;
+}
+
+.input{
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #ddd;
+  background: #222;
+  border: 0px;
+  outline: none;
+  margin-left: 50px;
+  box-shadow: 0 0 5px #000;
+  // animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn{
+  from{
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.filter{
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  background: #222;
+  margin: 10px;
+  box-shadow: 0 0 5px #000;
+  z-index: 0;
+
+  &:after{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background: #333;
+    z-index: -1;
+    transform-origin: bottom center;
+    transform: scaleY(0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  &.selected{
+    &::after{
+      transform: scaleY(1);
+    }
+  }
+
+  &:hover{
+    &:after{
+      transform: scaleY(1);
+    }
+  }
+}
