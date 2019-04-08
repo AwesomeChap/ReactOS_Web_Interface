@@ -71,6 +71,54 @@
   .filter:hover:after {
     transform: scaleY(1); }
 
+.page {
+  width: 100%;
+  height: 68vh; }
+
+.tab {
+  display: inline-block;
+  width: 48%;
+  height: 30%;
+  margin: 1% 1%;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 5px #000;
+  padding: 10px;
+  box-sizing: border-box; }
+
+.label {
+  color: #fff;
+  display: inline-block;
+  overflow: hidden;
+  box-shadow: 0 0 2px #000;
+  margin-left: 10px; }
+  .label .name {
+    display: inline-block;
+    padding: 5px 7px 5px 7px; }
+  .label .value {
+    display: inline-block;
+    padding: 5px 7px 5px 7px;
+    background-color: rgba(255, 255, 255, 0.295); }
+
+.tab-name {
+  display: inline-block;
+  font-size: 36px; }
+  .tab-name.author {
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #111;
+    color: #999; }
+
+.row {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.secondary {
+  color: #999; }
+  .secondary span {
+    color: #ddd; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -81,7 +129,7 @@ html, body {
   color: #ddd; }
 
 * {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+  font-family: 'Montserrat', sans-serif; }
 
 
 /*# sourceMappingURL=/src.e31bb0bc.css.map */
